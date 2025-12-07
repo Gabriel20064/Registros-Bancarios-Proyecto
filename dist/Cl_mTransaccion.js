@@ -53,8 +53,8 @@ export default class Cl_mTransaccion {
         if (this.descripcion.length === 0) {
             return "La descripción no puede estar vacía";
         }
-        if (this.monto === 0) {
-            return "El monto no puede ser 0";
+        if (this.monto >= 0) {
+            return "El monto no puede ser 0 o menor";
         }
         if (this.referencia.length === 0) {
             return "La referencia no puede estar vacía";
