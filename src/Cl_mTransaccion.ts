@@ -15,12 +15,12 @@ export default class Cl_mTransaccion{
     protected _tipoTransaccion: number = 0;
     protected _categoria: number =0 ;
     constructor({
-        fecha,
-        descripcion,
-        monto,
-        referencia,
-        tipoTransaccion,
-        categoria
+        fecha = "",
+        descripcion = "",
+        monto = 0,
+        referencia = "",
+        tipoTransaccion = 0,
+        categoria = 0
     }: {
         fecha: string;
         descripcion: string;
@@ -36,57 +36,41 @@ export default class Cl_mTransaccion{
         this.tipoTransaccion = tipoTransaccion;
         this.categoria = categoria;
     }
-    get fecha(): string {
-        return this._fecha;
-    }
     set fecha(f: string) {
         this._fecha = f;
     }
-    get descripcion(): string {
-        return this._descripcion;
+    get fecha(): string {
+        return this._fecha;
     }
     set descripcion(d: string) {
         this._descripcion = d;
     }
-    get monto(): number {
-        return this._monto;
+    get descripcion(): string {
+        return this._descripcion;
     }
     set monto(m: number) {
         this._monto = +m;
     }
-    get referencia(): string {
-        return this._referencia;
+    get monto(): number {
+        return this._monto;
     }
     set referencia(r: string) {
         this._referencia = r;
     }
-    get tipoTransaccion(): number {
-        return this._tipoTransaccion;
+    get referencia(): string {
+        return this._referencia;
     }
     set tipoTransaccion(t: number) {
         this._tipoTransaccion = +t;
     }
-    
-    get categoria(): number {
-        return this._categoria;
+    get tipoTransaccion(): number {
+        return this._tipoTransaccion;
     }
     set categoria(c: number) {
         this._categoria = +c;
     }
-    error(): string | false {
-        if (this.descripcion.length === 0) {
-            return "La descripción no puede estar vacía";
-        }
-        if (this.monto <= 0) {
-            return "El monto no puede ser 0 o menor";
-        }
-        if (this.referencia.length === 0) {
-            return "La referencia no puede estar vacía";
-        }
-        if (this.referencia.length !== 3) {
-            return "La referencia debe tener 3 caracteres";
-        }   
-        return false;
+    get categoria(): number {
+        return this._categoria;
     }
     public montoCargo(): number{
         if (this.tipoTransaccion === 1)
@@ -122,7 +106,6 @@ export default class Cl_mTransaccion{
                 return "Otros";
         }
     }
-
         toJSON(): iTransaccion {
             return {
                 descripcion: this.descripcion,
@@ -133,5 +116,4 @@ export default class Cl_mTransaccion{
                 tipoTransaccion: this.tipoTransaccion
             };
         }
-
 } 
