@@ -255,3 +255,14 @@ select:focus {
   }
 }
 
+/* brightness */
+.positive-amount {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.negative-amount {
+  color: var(--error);
+  font-weight: 600;
+}
+
