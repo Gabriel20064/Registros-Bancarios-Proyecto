@@ -31,10 +31,10 @@ export default class vTransaccion extends Cl_vGeneral {
         const data = {
             fecha: this.inFecha.value,
             descripcion: this.inDescripcion.value.toLowerCase(),
-            monto: 0,
+            monto: parseFloat(this.inMonto.value || "0"),
             referencia: this.inReferencia.value.trim().toUpperCase(),
-            tipoTransaccion: 0,
-            categoria: 0
+            tipoTransaccion: parseInt(this.inTipoTransaccion.value || "0", 10),
+            categoria: parseInt(this.inCategoria.value || "0", 10)
         };
         this.controlador?.procesarTransaccion(data);
         this.limpiar();
