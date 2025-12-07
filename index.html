@@ -7,75 +7,6 @@
     <title>HyperLinkBlocked</title>
 </head>
 <body>
-
-<script>
-(function(){ //Nuevo
-  const STORAGE_KEY = "Movimientos_Bancarios_data";
-
-  function leerTransacciones() {
-    const data = localStorage.getItem(STORAGE_KEY);
-    if (!data) return [];
-    try {
-      return JSON.parse(data);
-    } catch (e) {
-      console.error("Error parseando transacciones desde localStorage", e);
-      return [];
-    }
-  }
-
-  function calcularTotales(transacciones) {
-    let totalCargos = 0;
-    let totalAbonos = 0;
-    for (const t of transacciones) {
-      const monto = Number(t.monto) || 0;
-      const tipo = Number(t.tipoTransaccion) || 0;
-      if (tipo === 1) totalCargos += monto; // Cargo
-      else if (tipo === 2) totalAbonos += monto; // Abono
-    }
-    return { totalCargos, totalAbonos, saldoFinal: totalAbonos - totalCargos };
-  }
-
-  function formatear(n) { return Number(n).toFixed(2); }
-
-  function actualizarDOM() {
-    const trans = leerTransacciones();
-    const tot = calcularTotales(trans);
-
-    const elCargos = document.getElementById("totalDeCargos");
-    const elAbonos = document.getElementById("totalDeAbonos");
-    const elSaldo = document.getElementById("saldoFinal");
-
-    if (elCargos) elCargos.textContent = `Total de cargos: ${formatear(tot.totalCargos)}`;
-    if (elAbonos) elAbonos.textContent = `Total de abonos: ${formatear(tot.totalAbonos)}`;
-    if (elSaldo)  elSaldo.textContent  = `Saldos finales: ${formatear(tot.saldoFinal)}`;
-  }
-
-  // Observador para detectar cambios en la tabla de transacciones y actualizar totales
-  function observarTabla() {
-    const tbody = document.getElementById("transacciones_divTransacciones");
-    if (!tbody) return;
-    const observer = new MutationObserver(() => {
-      // pequeña demora para permitir que Cl_vBanco actualice innerHTML completamente
-      setTimeout(actualizarDOM, 0);
-    });
-    observer.observe(tbody, { childList: true, subtree: true, characterData: true });
-  }
-
-  // Inicializar
-  document.addEventListener("DOMContentLoaded", () => {
-    // actualizar al inicio
-    actualizarDOM();
-    // observar cambios en la tabla producidos por la app
-    observarTabla();
-    // fallback: si algo no detecta el cambio, re-evaluar cada 1s (opcional, puedes reducir o quitar)
-    setInterval(actualizarDOM, 1000);
-  });
-  //Nuevo
-})();
-</script>
-
-
-
     <h2 class="titleProyecto">Registros Bancarios</h2>
     
     <section id="transacciones">
@@ -188,6 +119,74 @@
         <button id="editTransaccion_btGuardar">Guardar</button>
         <button id="editTransaccion_btCancelar">Cancelar</button>
     </section>
+
+    
+<script>
+(function(){ //Nuevo
+  const STORAGE_KEY = "Movimientos_Bancarios_data";
+
+  function leerTransacciones() {
+    const data = localStorage.getItem(STORAGE_KEY);
+    if (!data) return [];
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      console.error("Error parseando transacciones desde localStorage", e);
+      return [];
+    }
+  }
+
+  function calcularTotales(transacciones) {
+    let totalCargos = 0;
+    let totalAbonos = 0;
+    for (const t of transacciones) {
+      const monto = Number(t.monto) || 0;
+      const tipo = Number(t.tipoTransaccion) || 0;
+      if (tipo === 1) totalCargos -= monto; // Cargo
+      else if (tipo === 2) totalAbonos += monto; // Abono
+    }
+    return { totalCargos, totalAbonos, saldoFinal: totalAbonos + totalCargos };
+  }
+
+  function formatear(n) { return Number(n).toFixed(2); }
+
+  function actualizarDOM() {
+    const trans = leerTransacciones();
+    const tot = calcularTotales(trans);
+
+    const elCargos = document.getElementById("totalDeCargos");
+    const elAbonos = document.getElementById("totalDeAbonos");
+    const elSaldo = document.getElementById("saldoFinal");
+
+    if (elCargos) elCargos.textContent = `Total de cargos: ${formatear(tot.totalCargos)}`;
+    if (elAbonos) elAbonos.textContent = `Total de abonos: ${formatear(tot.totalAbonos)}`;
+    if (elSaldo)  elSaldo.textContent  = `Saldos finales: ${formatear(tot.saldoFinal)}`;
+  }
+
+  // Observador para detectar cambios en la tabla de transacciones y actualizar totales
+  function observarTabla() {
+    const tbody = document.getElementById("transacciones_divTransacciones");
+    if (!tbody) return;
+    const observer = new MutationObserver(() => {
+      // pequeña demora para permitir que Cl_vBanco actualice innerHTML completamente
+      setTimeout(actualizarDOM, 0);
+    });
+    observer.observe(tbody, { childList: true, subtree: true, characterData: true });
+  }
+
+  // Inicializar
+  document.addEventListener("DOMContentLoaded", () => {
+    // actualizar al inicio
+    actualizarDOM();
+    // observar cambios en la tabla producidos por la app
+    observarTabla();
+    // fallback: si algo no detecta el cambio, re-evaluar cada 1s (opcional, puedes reducir o quitar)
+    setInterval(actualizarDOM, 1000);
+  });
+  //Nuevo
+})();
+</script>
+
 
 
 

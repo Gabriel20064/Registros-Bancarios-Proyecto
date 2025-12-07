@@ -65,15 +65,4 @@ export default class Cl_mBanco {
         return this.transacciones;
     }
         
-    //Test //Nuevo
-    public get totalCargos(): number {
-        return this.transacciones.reduce((sum, t) => sum + t.montoCargo(), 0);//Nuevo
-    }
-
-    public get totalAbonos(): number {
-        return this.transacciones.reduce((sum, t) => sum + t.montoAbono(), 0);//Nuevo
-    }
-    public saldoFinal(): number {
-        return this.totalAbonos - this.totalCargos;//Nuevo
-    }
 }
