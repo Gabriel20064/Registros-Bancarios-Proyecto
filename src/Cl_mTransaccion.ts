@@ -83,8 +83,8 @@ export default class Cl_mTransaccion{
         if (this.referencia.length === 0) {
             return "La referencia no puede estar vacía";
         }
-        if (this.referencia.length !== 7) {
-            return "La referencia debe tener 7 caracteres";
+        if (this.referencia.length !== 3) {
+            return "La referencia debe tener 3 caracteres";
         }   
         return false;
     }
