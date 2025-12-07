@@ -24,9 +24,9 @@ export default class Cl_vBanco extends Cl_vGeneral {
                 <td>${trans.referencia}</td>
                 <td>${trans.categoriaTexto()}</td>
                 <td>
-                    <button class="btDetails" data-ref="${trans.referencia}" title="Detalles de la Transaccion" style=" font-size: 1.5rem; color:black; background:black; border:2px solid black; padding:3px;">❔</button>
-                    <button class="btEdit" data-ref="${trans.referencia}" title="Editar Transaccion" style=" font-size: 1.5rem; color:black; background:black; border:2px solid black; padding:3px;">⚙️</button>
-                    <button class="btDelete" data-ref="${trans.referencia}" title="Eliminar Transaccion" style=" font-size: 1.5rem; color:red; background:red; border:2px solid black; padding:3px;">🗑️</button>
+                    <button class="btDetails" data-ref="${trans.referencia}" title="Detalles de la Transaccion" style=" font-size: 1rem; color:black; background:black; border:2px solid black; padding:3px;">❔</button>
+                    <button class="btEdit" data-ref="${trans.referencia}" title="Editar Transaccion" style=" font-size: 1rem; color:black; background:black; border:2px solid black; padding:3px;">⚙️</button>
+                    <button class="btDelete" data-ref="${trans.referencia}" title="Eliminar Transaccion" style=" font-size: 1rem; color:red; background:red; border:2px solid black; padding:3px;">🗑️</button>
                 </td>
             </tr>`;
         });
