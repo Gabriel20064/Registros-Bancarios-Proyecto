@@ -5,7 +5,7 @@ export default class Cl_mTransaccion {
     _referencia = "";
     _tipoTransaccion = 0;
     _categoria = 0;
-    constructor({ fecha, descripcion, monto, referencia, tipoTransaccion, categoria }) {
+    constructor({ fecha = "", descripcion = "", monto = 0, referencia = "", tipoTransaccion = 0, categoria = 0 }) {
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.monto = monto;
@@ -13,56 +13,41 @@ export default class Cl_mTransaccion {
         this.tipoTransaccion = tipoTransaccion;
         this.categoria = categoria;
     }
-    get fecha() {
-        return this._fecha;
-    }
     set fecha(f) {
         this._fecha = f;
     }
-    get descripcion() {
-        return this._descripcion;
+    get fecha() {
+        return this._fecha;
     }
     set descripcion(d) {
         this._descripcion = d;
     }
-    get monto() {
-        return this._monto;
+    get descripcion() {
+        return this._descripcion;
     }
     set monto(m) {
         this._monto = +m;
     }
-    get referencia() {
-        return this._referencia;
+    get monto() {
+        return this._monto;
     }
     set referencia(r) {
         this._referencia = r;
     }
-    get tipoTransaccion() {
-        return this._tipoTransaccion;
+    get referencia() {
+        return this._referencia;
     }
     set tipoTransaccion(t) {
         this._tipoTransaccion = +t;
     }
-    get categoria() {
-        return this._categoria;
+    get tipoTransaccion() {
+        return this._tipoTransaccion;
     }
     set categoria(c) {
         this._categoria = +c;
     }
-    error() {
-        if (this.descripcion.length === 0) {
-            return "La descripción no puede estar vacía";
-        }
-        if (this.monto <= 0) {
-            return "El monto no puede ser 0 o menor";
-        }
-        if (this.referencia.length === 0) {
-            return "La referencia no puede estar vacía";
-        }
-        if (this.referencia.length !== 3) {
-            return "La referencia debe tener 3 caracteres";
-        }
-        return false;
+    get categoria() {
+        return this._categoria;
     }
     montoCargo() {
         if (this.tipoTransaccion === 1)
