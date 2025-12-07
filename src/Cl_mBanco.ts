@@ -35,7 +35,7 @@ export default class Cl_mBanco {
             if (data.descripcion !== undefined) existe.descripcion = data.descripcion;
             if (data.monto !== undefined) existe.monto = data.monto;
             if (data.tipoTransaccion !== undefined) existe.tipoTransaccion = data.tipoTransaccion;
-
+            if (data.categoria !== undefined) existe.categoria = data.categoria;
         } else {
             this.transacciones.push(new Cl_mTransaccion(data));
         }
