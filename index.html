@@ -70,11 +70,13 @@
 
     <section id="editTransaccion" hidden>
         <h4>Editar Transaccion</h4>
-        <input id="editTransaccion_inReferenciaHidden" type="hidden">
+            <input id="editTransaccion_inReferenciaHidden" type="hidden">
 
-        <label>Tipo de Transaccion (1-cargo, 2-abono):</label>
-                  <input id= "editTransaccion_inTipoTransaccion" type="text"> <br><br>
-
+            <label>Tipo de Transaccion:</label>
+                <select id="editTransaccion_inTipoTransaccion">
+                    <option value= 1 >Cargo</option>
+                    <option value= 2 >Abono</option>
+                </select><br>
 
             <label>Fecha: </label>
                 <input id= "editTransaccion_inFecha" type="date" name="fecha" required><br><br>
@@ -85,21 +87,21 @@
             <label>Referencia:</label>
                 <input id="editTransaccion_inReferencia" type="text" name="referencia" minlength="7" maxlength="7" required placeholder="Ej. TRX-002"><br><br>
 
-                <label>Categoria:</label>
+            <label>Categoria:</label>
                 <select id= "editTransaccion_inCategoria" type="text" name="categoria" required>
                     <option value= 1 >Ingreso</option>
-                    <option value= 2 >Alimentacion</option>
-                    <option value= 3 >Servicios</option>
-                    <option value= 4 >Vestido</option>
-                    <option value= 5 >Transporte</option>
+                    <option value= 2 >Alimentación</option>
+                    <option value= 3 >Servicios Basicos</option>
+                    <option value= 4 >Artículos de Vestimenta</option>
+                    <option value= 5 >Servicios Publicos</option>
                     <option value= 6 >Entretenimiento</option>
-                    <option value= 7 >Estudios</option>
-                    <option value= 8 >Vivienda</option>
-                    <option value= 9 >otros</option>
+                    <option value= 7 >Educación</option>
+                    <option value= 8 >Gasto del Hogar</option>
+                    <option value= 9 >Otros</option>
                 </select><br><br>
 
-                <label>Monto:</label>
-                <input id="editTransaccion_inMonto" type="number" name="monto" step="0.01" required><br><br>
+            <label>Monto:</label>
+            <input id="editTransaccion_inMonto" type="number" name="monto" step="0.01" required><br><br>
 
         <button id="editTransaccion_btGuardar">Guardar</button>
         <button id="editTransaccion_btCancelar">Cancelar</button>
