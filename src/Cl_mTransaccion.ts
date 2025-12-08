@@ -36,40 +36,40 @@ export default class Cl_mTransaccion{
         this.tipoTransaccion = tipoTransaccion;
         this.categoria = categoria;
     }
-    set fecha(f: string) {
+    public set fecha(f: string) {
         this._fecha = f;
     }
-    get fecha(): string {
+    public get fecha(): string {
         return this._fecha;
     }
-    set descripcion(d: string) {
+    public set descripcion(d: string) {
         this._descripcion = d;
     }
-    get descripcion(): string {
+    public get descripcion(): string {
         return this._descripcion;
     }
-    set monto(m: number) {
+    public set monto(m: number) {
         this._monto = +m;
     }
-    get monto(): number {
+    public get monto(): number {
         return this._monto;
     }
-    set referencia(r: string) {
+    public set referencia(r: string) {
         this._referencia = r;
     }
-    get referencia(): string {
+    public get referencia(): string {
         return this._referencia;
     }
-    set tipoTransaccion(t: number) {
+    public set tipoTransaccion(t: number) {
         this._tipoTransaccion = +t;
     }
-    get tipoTransaccion(): number {
+    public get tipoTransaccion(): number {
         return this._tipoTransaccion;
     }
-    set categoria(c: number) {
+    public set categoria(c: number) {
         this._categoria = +c;
     }
-    get categoria(): number {
+    public get categoria(): number {
         return this._categoria;
     }
     public montoCargo(): number{

@@ -74,7 +74,7 @@
                 </select><br>
 
             <label>Monto:</label>
-            <input id="registroTransaccion_inMonto" type="number" min= "0" name="monto" step="0.01" required>
+            <input id="registroTransaccion_inMonto" type="number" min= "0" maxlength="7" name="monto" step="0.01" required>
             <br><br>
         <button id="registroTransaccion_btGuardar">Guardar</button>
         <button id="registroTransaccion_btVolver">Volver</button>
@@ -97,7 +97,7 @@
                 <input id= "editTransaccion_inDescripcion" type="text" name="descripcion" minlength="1" maxlength="30" required placeholder="Ej. Pago de servicios"><br>
 
             <label>Referencia:</label>
-                <input id="editTransaccion_inReferencia" type="text" name="referencia" minlength="3" maxlength="3" required placeholder="Ej. TRX-002"><br>
+                <input id="editTransaccion_inReferencia" type="text" name="referencia" minlength="1" maxlength="3" required placeholder="Ej.001"><br>
 
             <label>Categoria:</label>
                 <select id= "editTransaccion_inCategoria" type="text" name="categoria" required>
@@ -111,9 +111,8 @@
                     <option value= 8 >Gasto del Hogar</option>
                     <option value= 9 >Otros</option>
                 </select><br>
-
             <label>Monto:</label>
-            <input id="editTransaccion_inMonto" type="number" name="monto" step="0.01" required><br><br>
+            <input id="editTransaccion_inMonto" type="number" min= "0" maxlength="7" name="monto" step="0.01" required><br><br>
 
         <button id="editTransaccion_btGuardar">Guardar</button>
         <button id="editTransaccion_btCancelar">Cancelar</button>
@@ -157,9 +156,9 @@
     const elAbonos = document.getElementById("totalDeAbonos");
     const elSaldo = document.getElementById("saldoFinal");
 
-    if (elCargos) elCargos.textContent = `Total de cargos: ${formatear(tot.totalCargos)}`;
-    if (elAbonos) elAbonos.textContent = `Total de abonos: ${formatear(tot.totalAbonos)}`;
-    if (elSaldo)  elSaldo.textContent  = `Saldos finales: ${formatear(tot.saldoFinal)}`;
+    if (elCargos) elCargos.textContent = `Total de cargos: Bs. ${formatear(tot.totalCargos)}`;
+    if (elAbonos) elAbonos.textContent = `Total de abonos: Bs. ${formatear(tot.totalAbonos)}`;
+    if (elSaldo)  elSaldo.textContent  = `Saldos finales: Bs. ${formatear(tot.saldoFinal)}`;
   }
 
   // Observador para detectar cambios en la tabla de transacciones y actualizar totales

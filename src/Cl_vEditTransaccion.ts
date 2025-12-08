@@ -27,6 +27,18 @@ export default class Cl_vEditTransaccion extends Cl_vGeneral {
         this.btCancelar = this.crearHTMLButtonElement("btCancelar", {
             onclick: () => this.cancelar()
         });
+        // Añadir listener para filtrar categorías según el tipo de transacción
+        try {
+            const tipoEl = document.getElementById(`${this.formName}_inTipoTransaccion`) as HTMLSelectElement | null;
+            const catEl = document.getElementById(`${this.formName}_inCategoria`) as HTMLSelectElement | null;
+            if (tipoEl && catEl) {
+                tipoEl.onchange = () => this._aplicarFiltroCategorias(tipoEl, catEl);
+                // inicializar según el valor actual
+                this._aplicarFiltroCategorias(tipoEl, catEl);
+            }
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     public cargarDatos(trans: iTransaccion) {
@@ -77,4 +89,38 @@ export default class Cl_vEditTransaccion extends Cl_vGeneral {
     }
     public mostrar() { this.vista!.hidden = false; }
     public ocultar() { this.vista!.hidden = true; }
+
+    private _aplicarFiltroCategorias(tipoEl: HTMLSelectElement, catEl: HTMLSelectElement) {
+        const tipo = parseInt(tipoEl.value || "0", 10);
+        let options = "";
+        if (tipo === 1) {
+            const opts = [
+                { v: 2, t: "Alimentación" },
+                { v: 3, t: "Servicios Basicos" },
+                { v: 4, t: "Artículos de Vestimenta" },
+                { v: 5, t: "Servicios Publicos" },
+                { v: 6, t: "Entretenimiento" },
+                { v: 7, t: "Educación" },
+                { v: 8, t: "Gasto del Hogar" },
+                { v: 9, t: "Otros" },
+            ];
+            options = opts.map(o => `<option value="${o.v}">${o.t}</option>`).join("");
+        } else if (tipo === 2) {
+            options = `<option value="1">Ingreso</option>`;
+        } else {
+            options = `
+                <option value=1>Ingreso</option>
+                <option value=2>Alimentación</option>
+                <option value=3>Servicios Basicos</option>
+                <option value=4>Artículos de Vestimenta</option>
+                <option value=5>Servicios Publicos</option>
+                <option value=6>Entretenimiento</option>
+                <option value=7>Educación</option>
+                <option value=8>Gasto del Hogar</option>
+                <option value=9>Otros</option>`;
+        }
+        const prev = catEl.value;
+        catEl.innerHTML = options;
+        if (catEl.querySelector(`option[value="${prev}"]`)) catEl.value = prev;
+    }
 }
