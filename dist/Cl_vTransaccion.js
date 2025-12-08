@@ -32,6 +32,10 @@ export default class vTransaccion extends Cl_vGeneral {
             alert("El monto debe ser mayor a 0.");
             return;
         }
+        if (this.inReferencia.value.length !== 3) {
+            alert("La referencia debe tener 3 caracteres.");
+            return;
+        }
         const data = {
             fecha: this.inFecha.value,
             descripcion: this.inDescripcion.value.toLowerCase(),

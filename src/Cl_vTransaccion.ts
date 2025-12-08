@@ -27,12 +27,16 @@ export default class vTransaccion extends Cl_vGeneral {
         });
     }
 
-    private guardar(){ //ARREGLAR
+    private guardar(){ //ARREGLADO
         if (!this.inFecha.value || !this.inDescripcion.value || !this.inMonto.value || !this.inReferencia.value || !this.inTipoTransaccion.value || !this.inCategoria.value){ 
             alert("Debes llenar todos los campos.");
             return;}
         if (+this.inMonto.value <= 0){ 
             alert("El monto debe ser mayor a 0.");
+            return;
+        }
+        if (this.inReferencia.value.length !== 3){
+            alert("La referencia debe tener 3 caracteres.");
             return;
         }
     const data = {
@@ -63,8 +67,6 @@ export default class vTransaccion extends Cl_vGeneral {
 
     public mostrar() { this.vista!.hidden = false; }
     public ocultar() { this.vista!.hidden = true; }
-    
-
-    
+        
 }
 
