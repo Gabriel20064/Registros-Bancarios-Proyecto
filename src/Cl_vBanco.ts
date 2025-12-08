@@ -65,7 +65,6 @@ export default class Cl_vBanco extends Cl_vGeneral {
             };
         });
     }
-
     public mostrar() {
         this.vista!.hidden = false;
         this.refreshTable(); 

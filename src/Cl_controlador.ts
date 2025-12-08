@@ -64,7 +64,7 @@ export default class Cl_controlador {
             this.vEditTransaccion.mostrar();
         }
     }
-
+    
     get dtTransacciones() {
         return this.mBanco.dtTransacciones;
     }

@@ -2,6 +2,9 @@ import Cl_mTransaccion from "./Cl_mTransaccion.js";
 export default class Cl_mBanco {
     transacciones = [];
     STORAGE_KEY = "Movimientos_Bancarios_data";
+    //Atributos derivados para los metodos de conciliacion (revision)
+    acmMontoCargos = 0;
+    acmMontoAbonos = 0;
     constructor() {
         this.cargar();
     }
