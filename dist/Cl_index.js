@@ -3,6 +3,8 @@ import Cl_mBanco from "./Cl_mBanco.js";
 import Cl_vBanco from "./Cl_vBanco.js";
 import Cl_vTransaccion from "./Cl_vTransaccion.js";
 import Cl_vEditTransaccion from "./Cl_vEditTransaccion.js";
+import { dtTransacciones } from "./data/dtTransacciones.js";
+import Cl_mTransaccion from "./Cl_mTransaccion.js";
 export default class Cl_index {
     constructor() {
         let modelo = new Cl_mBanco();
@@ -11,6 +13,12 @@ export default class Cl_index {
         let vEditTransaccion = new Cl_vEditTransaccion();
         // Inyectamos todas las vistas
         let controlador = new Cl_controlador(modelo, vista, vTransaccion, vEditTransaccion);
+        // dataTransacciones
+        dtTransacciones.forEach((transaccion) => {
+            modelo.procesarTransaccion({
+                transaccion: new Cl_mTransaccion(transaccion),
+            });
+        });
         vista.controlador = controlador;
         vTransaccion.controlador = controlador;
         vEditTransaccion.controlador = controlador;

@@ -28,7 +28,6 @@ export default class Cl_mBanco {
         const data = this.transacciones.map(registro2 => registro2.toJSON());
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
     }
-
     public procesarTransaccion(data: any): boolean {
         let existe = this.transacciones.find(a => a.referencia === data.referencia);
         
