@@ -77,6 +77,19 @@ export default class Cl_vBanco extends Cl_vGeneral {
             };
         });
     }
+    //Para los Metodos
+   // Actualizar los elementos del DOM que muestran los totales 
+   private actualizarDOMTotales(t: { totalCargos: number; totalAbonos: number; saldoFinal: number }) { //new
+       const elCargos = document.getElementById("totalDeCargos");
+       const elAbonos = document.getElementById("totalDeAbonos");
+       const elSaldo = document.getElementById("saldoFinal");
+       const banco = this.controlador?.dtBanco;
+       const format = banco ? (n: number) => banco.formatearMonto(n) : (n: number) => Number(n).toFixed(2);
+       if (elCargos) elCargos.textContent = `Total de cargos: Bs. ${format(t.totalCargos)}`; 
+       if (elAbonos) elAbonos.textContent = `Total de abonos: Bs. ${format(t.totalAbonos)}`;
+       if (elSaldo) elSaldo.textContent = `Saldo final: Bs. ${format(t.saldoFinal)}`;
+   }
+   //Controlador vistas
     public mostrar() {
         this.vista!.hidden = false;
         this.refreshTable(); 
@@ -85,16 +98,4 @@ export default class Cl_vBanco extends Cl_vGeneral {
         this.vista!.hidden = true;
     }
 
-     //Para los Metodos
-    // Actualizar los elementos del DOM que muestran los totales 
-    private actualizarDOMTotales(t: { totalCargos: number; totalAbonos: number; saldoFinal: number }) { //new
-        const elCargos = document.getElementById("totalDeCargos");
-        const elAbonos = document.getElementById("totalDeAbonos");
-        const elSaldo = document.getElementById("saldoFinal");
-        const banco = this.controlador?.dtBanco;
-        const format = banco ? (n: number) => banco.formatearMonto(n) : (n: number) => Number(n).toFixed(2);
-        if (elCargos) elCargos.textContent = `Total de cargos: Bs. ${format(t.totalCargos)}`; 
-        if (elAbonos) elAbonos.textContent = `Total de abonos: Bs. ${format(t.totalAbonos)}`;
-        if (elSaldo) elSaldo.textContent = `Saldo final: Bs. ${format(t.saldoFinal)}`;
-    }
 }

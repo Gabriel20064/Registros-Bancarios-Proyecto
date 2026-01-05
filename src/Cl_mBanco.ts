@@ -100,10 +100,10 @@ public calcularTotales(saldoInicial = 5000.00) { //new
   let totalAbonos = 0; 
   for (const t of this.transacciones) { 
     const monto = Number(t.monto) || 0;
-    if (Number(t.tipoTransaccion) === 1) totalCargos += monto;
+    if (Number(t.tipoTransaccion) === 1) totalCargos -= monto;
     else if (Number(t.tipoTransaccion) === 2) totalAbonos += monto;
   }
-  return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos - totalCargos };
+  return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos + totalCargos };
 }
     public formatearMonto(n: number) { return Number(n).toFixed(2); } //new
     private eventTarget = new EventTarget(); //new

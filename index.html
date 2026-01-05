@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título de la página y de la vista previa (WhatsApp) -->
     <title>HyperLinkBlocked</title>
     <meta property="og:title" content="Resgitros Bancarios" />
@@ -132,6 +132,44 @@
 
         <button id="editTransaccion_btGuardar">Guardar</button>
         <button id="editTransaccion_btCancelar">Cancelar</button>
+    </section>
+
+    <section id="detailsTransaccion" hidden>
+        <h3>Detalles de la Transaccion</h3>
+<div class="container">
+  <div class="transaccion-item">
+    <h4 class="titulo">Fecha</h4>
+    <p id="detailsTransaccion_lblFecha" class="dato"></p>
+  </div>
+
+  <div class="transaccion-item">
+    <h4 class="titulo">Tipo</h4>
+    <p id="detailsTransaccion_lblTipo" class="dato"></p>
+  </div>
+
+  <div class="transaccion-item">
+    <h4 class="titulo">Monto</h4>
+    <p id="detailsTransaccion_lblMonto" class="dato monto"></p>
+  </div>
+
+  <div class="transaccion-item">
+    <h4 class="titulo">Descripción</h4>
+    <p id="detailsTransaccion_lblDescripcion" class="dato"></p>
+  </div>
+
+  <div class="transaccion-item">
+    <h4 class="titulo">Referencia</h4>
+    <p id="detailsTransaccion_lblReferencia" class="dato"></p>
+  </div>
+
+  <div class="transaccion-item">
+    <h4 class="titulo">Categoría</h4>
+    <p id="detailsTransaccion_lblCategoria" class="dato"></p>
+  </div>
+
+  <button id="detailsTransaccion_btCerrar" class="btn-cerrar">Cerrar</button>
+</div>
+
     </section>
 
     <script type="module">

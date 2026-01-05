@@ -97,11 +97,11 @@ export default class Cl_mBanco {
         for (const t of this.transacciones) {
             const monto = Number(t.monto) || 0;
             if (Number(t.tipoTransaccion) === 1)
-                totalCargos += monto;
+                totalCargos -= monto;
             else if (Number(t.tipoTransaccion) === 2)
                 totalAbonos += monto;
         }
-        return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos - totalCargos };
+        return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos + totalCargos };
     }
     formatearMonto(n) { return Number(n).toFixed(2); } //new
     eventTarget = new EventTarget(); //new

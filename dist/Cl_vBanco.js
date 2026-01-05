@@ -72,13 +72,6 @@ export default class Cl_vBanco extends Cl_vGeneral {
             };
         });
     }
-    mostrar() {
-        this.vista.hidden = false;
-        this.refreshTable();
-    }
-    ocultar() {
-        this.vista.hidden = true;
-    }
     //Para los Metodos
     // Actualizar los elementos del DOM que muestran los totales 
     actualizarDOMTotales(t) {
@@ -93,5 +86,13 @@ export default class Cl_vBanco extends Cl_vGeneral {
             elAbonos.textContent = `Total de abonos: Bs. ${format(t.totalAbonos)}`;
         if (elSaldo)
             elSaldo.textContent = `Saldo final: Bs. ${format(t.saldoFinal)}`;
+    }
+    //Controlador vistas
+    mostrar() {
+        this.vista.hidden = false;
+        this.refreshTable();
+    }
+    ocultar() {
+        this.vista.hidden = true;
     }
 }
