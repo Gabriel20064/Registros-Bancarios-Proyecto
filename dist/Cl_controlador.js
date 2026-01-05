@@ -50,4 +50,7 @@ export default class Cl_controlador {
     get dtTransacciones() {
         return this.mBanco.dtTransacciones;
     }
+    get dtBanco() {
+        return this.mBanco;
+    }
 }

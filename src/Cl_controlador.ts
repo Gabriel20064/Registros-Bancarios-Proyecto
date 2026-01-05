@@ -65,7 +65,10 @@ export default class Cl_controlador {
         }
     }
 
-    public get dtTransacciones() {
+    public get dtTransacciones() { //Para las tablas de atributos
         return this.mBanco.dtTransacciones;
+    }
+    public get dtBanco(): Cl_mBanco { // New - Para los metodos
+        return this.mBanco;
     }
 }

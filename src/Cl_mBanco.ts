@@ -33,6 +33,7 @@ export default class Cl_mBanco {
 
     constructor() {
         this.cargar();
+        this.emitirTotales(); //new
     }
 
     private cargar() {
@@ -67,6 +68,7 @@ export default class Cl_mBanco {
         }
         
         this.guardar();
+        this.emitirTotales(); //new
         return true;
     }
 
@@ -75,6 +77,7 @@ export default class Cl_mBanco {
         if (index !== -1) {
             this.transacciones.splice(index, 1);
             this.guardar();
+            this.emitirTotales(); //new
             return true;
         }
         return false;
@@ -89,119 +92,28 @@ export default class Cl_mBanco {
     }
     
     
-    //Metodos 
-     /*   public resumen(transacciones: Cl_mTransaccion[]): { totalIngresos: number; totalEgresos: number; saldoFinal:number }{
-        for (let t of transacciones) {
-            if (t.tipoTransaccion === 1) {
-                this.acmMontoCargos += t.monto;
-            } else if (t.tipoTransaccion === 2) {
-                this.acmMontoAbonos += t.monto;
-            }
-        }
-        return { totalIngresos: this.acmMontoAbonos, totalEgresos: this.acmMontoCargos, saldoFinal: this.acmMontoAbonos - this.acmMontoCargos };    
+    //Metodos
+
+    //Resumen
+public calcularTotales(saldoInicial = 5000.00) { //new
+  let totalCargos = 0; 
+  let totalAbonos = 0; 
+  for (const t of this.transacciones) { 
+    const monto = Number(t.monto) || 0;
+    if (Number(t.tipoTransaccion) === 1) totalCargos += monto;
+    else if (Number(t.tipoTransaccion) === 2) totalAbonos += monto;
+  }
+  return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos - totalCargos };
+}
+    public formatearMonto(n: number) { return Number(n).toFixed(2); } //new
+    private eventTarget = new EventTarget(); //new
+
+    public onTotalesActualizados(cb: (totales: ReturnType<Cl_mBanco['calcularTotales']>) => void) { 
+        this.eventTarget.addEventListener('totalesActualizados', (ev: Event) => cb((ev as CustomEvent).detail));
     }
 
-        public DesgloseCategoria(transacciones: Cl_mTransaccion[]): { 
-    ingresos: number; 
-    alimentacion: number; 
-    serviciosBasicos: number; 
-    articulosVestimenta: number; 
-    serviciosPublicos: number; 
-    entretenimiento: number; 
-    educacion: number; 
-    gastoHogar: number; 
-    otros: number; 
-    pIngresos: number;
-    pAlimentacion: number; 
-    pServiciosBasicos: number; 
-    pArticulosVestimenta: number; 
-    pServiciosPublicos: number; 
-    pEntretenimiento: number; 
-    pEducacion: number; 
-    pGastoHogar: number; 
-    pOtros: number; 
-} {
-    let ingresos = 0;
-    let alimentacion = 0;
-    let serviciosBasicos = 0;
-    let articulosVestimenta = 0;
-    let serviciosPublicos = 0;
-    let entretenimiento = 0;
-    let educacion = 0;
-    let gastoHogar = 0;
-    let otros = 0;
-    let pIngresos = 0;
-    let pAlimentacion = 0;
-    let pServiciosBasicos = 0;
-    let pArticulosVestimenta = 0;
-    let pServiciosPublicos = 0;
-    let pEntretenimiento = 0;
-    let pEducacion = 0;
-    let pGastoHogar = 0;
-    let pOtros = 0;
-
-    for (let t of transacciones) {
-        switch (t.categoria) {
-            case 1:
-                ingresos += t.monto;
-                break;
-            case 2:
-                alimentacion += t.monto;
-                break;
-            case 3:
-                serviciosBasicos += t.monto;
-                break;
-            case 4:
-                articulosVestimenta += t.monto;
-                break;
-            case 5:
-                serviciosPublicos += t.monto;
-                break;
-            case 6:
-                entretenimiento += t.monto;
-                break;
-            case 7:
-                educacion += t.monto;
-                break;
-            case 8:
-                gastoHogar += t.monto;
-                break;
-            case 9:
-                otros += t.monto;
-                break;
-            default:
-                break;
-        }
+    private emitirTotales() { //new
+        const tot = this.calcularTotales(); 
+        this.eventTarget.dispatchEvent(new CustomEvent('totalesActualizados', { detail: tot })); 
     }
-    pIngresos = this.cntCategoria1 / this.cntTransacciones;
-    pAlimentacion = this.cntCategoria2 / this.cntTransacciones;
-    pServiciosBasicos = this.cntCategoria3 / this.cntTransacciones;
-    pArticulosVestimenta = this.cntCategoria4 / this.cntTransacciones;
-    pServiciosPublicos = this.cntCategoria5 / this.cntTransacciones;
-    pEntretenimiento = this.cntCategoria6 / this.cntTransacciones;
-    pEducacion = this.cntCategoria7 / this.cntTransacciones;
-    pGastoHogar = this.cntCategoria8 / this.cntTransacciones;
-    pOtros = this.cntCategoria9 / this.cntTransacciones;
-
-    return { 
-        ingresos, 
-        alimentacion, 
-        serviciosBasicos, 
-        articulosVestimenta, 
-        serviciosPublicos, 
-        entretenimiento, 
-        educacion, 
-        gastoHogar, 
-        otros, 
-        pIngresos,
-        pAlimentacion, 
-        pServiciosBasicos, 
-        pArticulosVestimenta, 
-        pServiciosPublicos, 
-        pEntretenimiento, 
-        pEducacion, 
-        pGastoHogar, 
-        pOtros 
-    };
-}*/
 } 

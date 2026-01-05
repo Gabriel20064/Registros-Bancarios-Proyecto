@@ -2,6 +2,7 @@ import Cl_vGeneral from "./tools/Cl_vGeneral.js";
 export default class Cl_vBanco extends Cl_vGeneral {
     divTransacciones;
     btAdd;
+    totalesResumen = false; //new
     constructor() {
         super({ formName: "transacciones" });
         this.divTransacciones = this.crearHTMLElement("divTransacciones");
@@ -14,6 +15,7 @@ export default class Cl_vBanco extends Cl_vGeneral {
             return;
         let htmlTable = "";
         const transacciones = this.controlador.dtTransacciones;
+        const banco = this.controlador.dtBanco;
         transacciones.forEach((trans) => {
             htmlTable += `
             <tr>
@@ -32,6 +34,17 @@ export default class Cl_vBanco extends Cl_vGeneral {
         });
         this.divTransacciones.innerHTML = htmlTable;
         this.asignarEventos();
+        // Actualizacion totales//new
+        if (this.controlador) {
+            const banco = this.controlador.dtBanco;
+            // Actualiza inmediatamente los totales
+            this.actualizarDOMTotales(banco.calcularTotales());
+            // Suscribir a futuras actualizaciones una sola vez
+            if (!this.totalesResumen) {
+                banco.onTotalesActualizados(t => this.actualizarDOMTotales(t));
+                this.totalesResumen = true;
+            }
+        }
     }
     asignarEventos() {
         //Detalles
@@ -65,5 +78,20 @@ export default class Cl_vBanco extends Cl_vGeneral {
     }
     ocultar() {
         this.vista.hidden = true;
+    }
+    //Para los Metodos
+    // Actualizar los elementos del DOM que muestran los totales 
+    actualizarDOMTotales(t) {
+        const elCargos = document.getElementById("totalDeCargos");
+        const elAbonos = document.getElementById("totalDeAbonos");
+        const elSaldo = document.getElementById("saldoFinal");
+        const banco = this.controlador?.dtBanco;
+        const format = banco ? (n) => banco.formatearMonto(n) : (n) => Number(n).toFixed(2);
+        if (elCargos)
+            elCargos.textContent = `Total de cargos: Bs. ${format(t.totalCargos)}`;
+        if (elAbonos)
+            elAbonos.textContent = `Total de abonos: Bs. ${format(t.totalAbonos)}`;
+        if (elSaldo)
+            elSaldo.textContent = `Saldo final: Bs. ${format(t.saldoFinal)}`;
     }
 }

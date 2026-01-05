@@ -31,6 +31,7 @@ export default class Cl_mBanco {
     montoMayorGasto = 0; // Monto de la categoria con mayor gasto
     constructor() {
         this.cargar();
+        this.emitirTotales(); //new
     }
     cargar() {
         const data = localStorage.getItem(this.STORAGE_KEY);
@@ -69,6 +70,7 @@ export default class Cl_mBanco {
             this.transacciones.push(new Cl_mTransaccion(data));
         }
         this.guardar();
+        this.emitirTotales(); //new
         return true;
     }
     deleteTransaccion(referencia) {
@@ -76,6 +78,7 @@ export default class Cl_mBanco {
         if (index !== -1) {
             this.transacciones.splice(index, 1);
             this.guardar();
+            this.emitirTotales(); //new
             return true;
         }
         return false;
@@ -85,5 +88,28 @@ export default class Cl_mBanco {
     }
     get dtTransacciones() {
         return this.transacciones;
+    }
+    //Metodos
+    //Resumen
+    calcularTotales(saldoInicial = 5000.00) {
+        let totalCargos = 0;
+        let totalAbonos = 0;
+        for (const t of this.transacciones) {
+            const monto = Number(t.monto) || 0;
+            if (Number(t.tipoTransaccion) === 1)
+                totalCargos += monto;
+            else if (Number(t.tipoTransaccion) === 2)
+                totalAbonos += monto;
+        }
+        return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos - totalCargos };
+    }
+    formatearMonto(n) { return Number(n).toFixed(2); } //new
+    eventTarget = new EventTarget(); //new
+    onTotalesActualizados(cb) {
+        this.eventTarget.addEventListener('totalesActualizados', (ev) => cb(ev.detail));
+    }
+    emitirTotales() {
+        const tot = this.calcularTotales();
+        this.eventTarget.dispatchEvent(new CustomEvent('totalesActualizados', { detail: tot }));
     }
 }
