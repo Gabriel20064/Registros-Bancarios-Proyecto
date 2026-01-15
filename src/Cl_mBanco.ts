@@ -94,12 +94,12 @@ export default class Cl_mBanco {
     
     //Metodos
 
-    //Resumen
 public calcularTotales(saldoInicial = 5000.00) { //new
-  let totalCargos = 0; 
-  let totalAbonos = 0;
-  // porcentajes
-  let conTransacciones = 0,
+    //Resumen
+    let totalCargos = 0; 
+    let totalAbonos = 0;
+    // porcentajes
+    let conTransacciones = 0,
         contCargos = 0,
         contAbonos = 0;
   for (const t of this.transacciones) { 

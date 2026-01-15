@@ -90,8 +90,8 @@ export default class Cl_mBanco {
         return this.transacciones;
     }
     //Metodos
-    //Resumen
     calcularTotales(saldoInicial = 5000.00) {
+        //Resumen
         let totalCargos = 0;
         let totalAbonos = 0;
         // porcentajes
