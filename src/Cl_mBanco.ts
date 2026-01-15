@@ -97,23 +97,28 @@ export default class Cl_mBanco {
     //Resumen
 public calcularTotales(saldoInicial = 5000.00) { //new
   let totalCargos = 0; 
-  let totalAbonos = 0; 
+  let totalAbonos = 0;
+  // porcentajes
+  let conTransacciones = 0,
+        contCargos = 0,
+        contAbonos = 0;
   for (const t of this.transacciones) { 
+    conTransacciones++;
     const monto = Number(t.monto) || 0;
-    if (Number(t.tipoTransaccion) === 1) totalCargos -= monto;
-    else if (Number(t.tipoTransaccion) === 2) totalAbonos += monto;
+    if (Number(t.tipoTransaccion) === 1) {totalCargos -= monto; contCargos++};
+    if (Number(t.tipoTransaccion) === 2) {totalAbonos += monto; contAbonos++};
   }
-  return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos + totalCargos };
+  return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos + totalCargos, porcentajeCargos: contCargos/conTransacciones*100, porcentajeAbonos: contAbonos/conTransacciones*100 };
 }
     public formatearMonto(n: number) { return Number(n).toFixed(2); } //new
     private eventTarget = new EventTarget(); //new
 
-    public onTotalesActualizados(cb: (totales: ReturnType<Cl_mBanco['calcularTotales']>) => void) { 
+    public onTotalesActualizados(cb: (totales: ReturnType<Cl_mBanco['calcularTotales']>) => void) { //IGNORAR
         this.eventTarget.addEventListener('totalesActualizados', (ev: Event) => cb((ev as CustomEvent).detail));
     }
 
     private emitirTotales() { //new
         const tot = this.calcularTotales(); 
-        this.eventTarget.dispatchEvent(new CustomEvent('totalesActualizados', { detail: tot })); 
+        this.eventTarget.dispatchEvent(new CustomEvent('totalesActualizados', { detail: tot })); //IGNORAR
     }
 } 

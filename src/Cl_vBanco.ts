@@ -79,15 +79,19 @@ export default class Cl_vBanco extends Cl_vGeneral {
     }
     //Para los Metodos
    // Actualizar los elementos del DOM que muestran los totales 
-   private actualizarDOMTotales(t: { totalCargos: number; totalAbonos: number; saldoFinal: number }) { //new
+   private actualizarDOMTotales(t: { totalCargos: number; totalAbonos: number; saldoFinal: number ; porcentajeCargos: number; porcentajeAbonos: number }) { //new
        const elCargos = document.getElementById("totalDeCargos");
        const elAbonos = document.getElementById("totalDeAbonos");
        const elSaldo = document.getElementById("saldoFinal");
+       const elporcentajeCargos = document.getElementById("porcentajeDeCargos");
+       const elporcentajeAbonos = document.getElementById("porcentajeDeAbonos");
        const banco = this.controlador?.dtBanco;
        const format = banco ? (n: number) => banco.formatearMonto(n) : (n: number) => Number(n).toFixed(2);
        if (elCargos) elCargos.textContent = `Total de cargos: Bs. ${format(t.totalCargos)}`; 
        if (elAbonos) elAbonos.textContent = `Total de abonos: Bs. ${format(t.totalAbonos)}`;
        if (elSaldo) elSaldo.textContent = `Saldo final: Bs. ${format(t.saldoFinal)}`;
+       if (elporcentajeCargos) elporcentajeCargos.textContent = `porcentaje de cargos: ${format(t.porcentajeCargos)} %`;
+       if (elporcentajeAbonos) elporcentajeAbonos.textContent = `porcentaje de abonos: ${format(t.porcentajeAbonos)} %`;
    }
    //Controlador vistas
     public mostrar() {
