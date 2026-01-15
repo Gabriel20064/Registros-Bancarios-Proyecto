@@ -18,6 +18,10 @@ export default class Cl_index {
         vTransaccion.controlador = controlador;
         vEditTransaccion.controlador = controlador;
         vDetailsTransaccion.controlador = controlador;
+        //dataTransaccionesBK (eliminar /* */ para usar los datos antiguos de prueba)
+        /*dtTransaccionesBK.forEach((transaccion) => {
+          //modelo.procesarTransaccion(transaccion);
+        });*/
         // dataTransacciones
         dtTransacciones.forEach((transaccion) => {
             modelo.procesarTransaccion(transaccion);
