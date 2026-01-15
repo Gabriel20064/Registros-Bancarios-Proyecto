@@ -90,8 +90,8 @@ export default class Cl_vBanco extends Cl_vGeneral {
        if (elCargos) elCargos.textContent = `Total de cargos: Bs. ${format(t.totalCargos)}`; 
        if (elAbonos) elAbonos.textContent = `Total de abonos: Bs. ${format(t.totalAbonos)}`;
        if (elSaldo) elSaldo.textContent = `Saldo final: Bs. ${format(t.saldoFinal)}`;
-       if (elporcentajeCargos) elporcentajeCargos.textContent = `porcentaje de cargos: ${format(t.porcentajeCargos)} %`;
-       if (elporcentajeAbonos) elporcentajeAbonos.textContent = `porcentaje de abonos: ${format(t.porcentajeAbonos)} %`;
+       if (elporcentajeCargos) elporcentajeCargos.textContent = `Porcentaje de cargos sobre el total de movimientos monetarios: ${format(t.porcentajeCargos)} %`;
+       if (elporcentajeAbonos) elporcentajeAbonos.textContent = `Porcentaje de abono sobre el total de movimientos monetarios: ${format(t.porcentajeAbonos)} %`;
    }
    //Controlador vistas
     public mostrar() {
