@@ -78,6 +78,8 @@ export default class Cl_vBanco extends Cl_vGeneral {
         const elCargos = document.getElementById("totalDeCargos");
         const elAbonos = document.getElementById("totalDeAbonos");
         const elSaldo = document.getElementById("saldoFinal");
+        const elporcentajeCargos = document.getElementById("porcentajeDeCargos");
+        const elporcentajeAbonos = document.getElementById("porcentajeDeAbonos");
         const banco = this.controlador?.dtBanco;
         const format = banco ? (n) => banco.formatearMonto(n) : (n) => Number(n).toFixed(2);
         if (elCargos)
@@ -86,6 +88,10 @@ export default class Cl_vBanco extends Cl_vGeneral {
             elAbonos.textContent = `Total de abonos: Bs. ${format(t.totalAbonos)}`;
         if (elSaldo)
             elSaldo.textContent = `Saldo final: Bs. ${format(t.saldoFinal)}`;
+        if (elporcentajeCargos)
+            elporcentajeCargos.textContent = `Porcentaje de cargos sobre el total de movimientos monetarios: ${format(t.porcentajeCargos)} %`;
+        if (elporcentajeAbonos)
+            elporcentajeAbonos.textContent = `Porcentaje de abono sobre el total de movimientos monetarios: ${format(t.porcentajeAbonos)} %`;
     }
     //Controlador vistas
     mostrar() {

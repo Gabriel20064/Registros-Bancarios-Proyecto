@@ -1,179 +1,173 @@
 export const dtTransacciones = [
-  {
-      tipoTransaccion: 2,
-      fecha: "2025-11-01",
-      descripcion: "Depósito de Nómina",
-      referencia: "DEP-001",
-      categoria: 1,
-      monto: 3500.00
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-02",
-      descripcion: "Mercado Frescos S.A.",
-      referencia: "TRX-002",
-      categoria: 2,
-      monto: 125.50,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-02",
-      descripcion: "MOVISTAR - Teléfono",
-      referencia: "TRX-003",
-      categoria: 5,
-      monto: 89.99,
 
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-03",
-      descripcion: "Tienda Liverpool - Ropa",
-      referencia: "TRX-004",
-      categoria: 4,
-      monto: 450.00,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-04",
-      descripcion: "UBER",
-      referencia: "TRX-005",
-      categoria: 5,
-      monto: 48.25,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-05",
-      descripcion: "Cine Cinépolis",
-      referencia: "TRX-006",
-      categoria: 6,
-      monto: 180.00,
-  },
-  {
+  { //Datos nuevos
       tipoTransaccion: 2,
-      fecha: "2025-11-05",
-      descripcion: "Depósito Cliente XYZ",
-      referencia: "DEP-002",
+      fecha: "2025-12-01",
+      descripcion: "Depósito de Nómina",
+      referencia: "REF-001",
       categoria: 1,
-      monto: 2000.00
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-06",
-      descripcion: "Universidad - Matrícula",
-      referencia: "TRX-007",
-      categoria: 7,
-      monto: 1200.00,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-07",
-      descripcion: "Farmacia Guadalajara",
-      referencia: "TRX-008",
-      categoria: 3,
-      monto: 156.75,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-08",
-      descripcion: "Gasolinera PEMEX",
-      referencia: "TRX-009",
-      categoria: 5,
-      monto: 600.00,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-09",
-      descripcion: "Amazon - Compra Online",
-      referencia: "TRX-010",
-      categoria: 6,
-      monto: 299.99,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-10",
-      descripcion: "Pago de Renta - Apto",
-      referencia: "TRX-011",
-      categoria: 8,
-      monto: 3000.00,
-  },
-  {
-      tipoTransaccion: 2,
-      fecha: "2025-11-11",
-      descripcion: "Depósito de Freelance",
-      referencia: "DEP-003",
-      categoria: 1,
-      monto: 1500.00
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-12",
-      descripcion: "Walmart - Abarrotes",
-      referencia: "TRX-012",
-      categoria: 2,
-      monto: 278.50,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-13",
-      descripcion: "Comisión Bancaria",
-      referencia: "TRX-013",
-      categoria: 5,
-      monto: 50.00,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-14",
-      descripcion: "Restaurante La Trattoria",
-      referencia: "TRX-014",
-      categoria: 2,
-      monto: 385.00,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-15",
-      descripcion: "Netflix Suscripción",
-      referencia: "TRX-015",
-      categoria: 6,
-      monto: 199.00,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-16",
-      descripcion: "Coppel - Electrodoméstico",
-      referencia: "TRX-016",
-      categoria: 8,
-      monto: 2500.00,
-  },
-  {
-      tipoTransaccion: 2,
-      fecha: "2025-11-19",
-      descripcion: "Transferencia Familia",
-      referencia: "DEP-004",
-      categoria: 1,
-      monto: 500.00
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-20",
-      descripcion: "Dentista Clínica Plus",
-      referencia: "TRX-017",
-      categoria: 3,
-      monto: 850.00,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-22",
-      descripcion: "Yoga Classes - Mensual",
-      referencia: "TRX-018",
-      categoria: 6,
-      monto: 400.00,
-  },
-  {
-      tipoTransaccion: 1,
-      fecha: "2025-11-25",
-      descripcion: "Soriana - Supermercado",
-      referencia: "TRX-019",
-      categoria: 2,
-      monto: 520.75,
-  }
+      monto: 3200.00
+        
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-01",
+          descripcion: "Pago Renta Departamento",
+          referencia: "REF-002",
+          categoria: 8,
+          monto: 1100.00
+        
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-02",
+          descripcion: "Supermercado La Colonia",
+          referencia: "REF-003",
+          categoria: 2,
+          monto: 240.50
+        
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-02",
+          descripcion: "Gasolina vehículo",
+          referencia: "REF-004",
+          categoria: 5,
+          monto: 75.00
+        
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-03",
+          descripcion: "Servicio Internet y Teléfono",
+          referencia: "REF-005",
+          categoria: 3,
+          monto: 95.99
+        
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-03",
+          descripcion: "Ropa Invierno",
+          referencia: "REF-006",
+          categoria: 4,
+          monto: 180.00
+        
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-04",
+          descripcion: "Cine y palomitas",
+          referencia: "REF-007",
+          categoria: 6,
+          monto: 62.00
+        
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-04",
+          descripcion: "Cafetería Universidad",
+          referencia: "REF-008",
+          categoria: 2,
+          monto: 32.75,
+        
+      },
+      {
+          tipoTransaccion: 2,
+          fecha: "2025-12-05",
+          descripcion: "Pago Proyecto Freelance",
+          referencia: "REF-009",
+          categoria: 1,
+          monto: 850.00,
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-05",
+          descripcion: "Universidad - Mensualidad",
+          referencia: "REF-010",
+          categoria: 7,
+          monto: 430.00,
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-06",
+          descripcion: "Consulta médica y medicinas",
+          referencia: "REF-011",
+          categoria: 9,
+          monto: 155.40,
+        
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-06",
+          descripcion: "Taxi devolución tarde",
+          referencia: "REF-012",
+          categoria: 5,
+          monto: 58.90,
+        
+      },
+      {
+          tipoTransaccion: 2,
+          fecha: "2025-12-07",
+          descripcion: "Transferencia padres",
+          referencia: "REF-013",
+          categoria: 1,
+          monto: 400.00,
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-08",
+          descripcion: "Restaurante fin de semana",
+          referencia: "REF-014",
+          categoria: 2,
+          monto: 120.00,
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-09",
+          descripcion: "Suscripción streaming",
+          referencia: "REF-015",
+          categoria: 6,
+          monto: 49.99,
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-10",
+          descripcion: "Escritorio y silla oficina",
+          referencia: "REF-016",
+          categoria: 8,
+          monto: 310.00,
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-11",
+          descripcion: "Libros y material de estudio",
+          referencia: "REF-017",
+          categoria: 7,
+          monto: 210.30,
+      },
+      {
+          tipoTransaccion: 2,
+          fecha: "2025-12-12",
+          descripcion: "Venta artículos usados",
+          referencia: "REF-018",
+          categoria: 1,
+          monto: 300.00,
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-13",
+          descripcion: "Gimnasio mensual",
+          referencia: "REF-019",
+          categoria: 9,
+          monto: 95.60,
+      },
+      {
+          tipoTransaccion: 1,
+          fecha: "2025-12-14",
+          descripcion: "Donativo fundación",
+          referencia: "REF-020",
+          categoria: 9,
+          monto: 60.00,
+      }
 ];

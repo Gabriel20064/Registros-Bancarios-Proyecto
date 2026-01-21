@@ -5,6 +5,8 @@ import Cl_vTransaccion from "./Cl_vTransaccion.js";
 import Cl_vEditTransaccion from "./Cl_vEditTransaccion.js";
 import Cl_vDetailsTransaccion from "./Cl_vDetailsTransaccion.js";
 import {dtTransacciones} from "./data/dtTransacciones.js";
+/*import { dtTransaccionesBK } from "./data/dtTransaccionesBK.js";*/
+import Cl_mTransaccion from "./Cl_mTransaccion.js";
 export default class Cl_index {
   constructor() {
     let modelo = new Cl_mBanco();
@@ -20,6 +22,11 @@ export default class Cl_index {
     vTransaccion.controlador = controlador;
     vEditTransaccion.controlador = controlador;
     vDetailsTransaccion.controlador = controlador; 
+      //dataTransaccionesBK (eliminar /* */ para usar los datos antiguos de prueba)
+  /*dtTransaccionesBK.forEach((transaccion) => {
+    //modelo.procesarTransaccion(transaccion);
+  });*/  
+    
     // dataTransacciones
   dtTransacciones.forEach((transaccion) => {
     modelo.procesarTransaccion(transaccion);

@@ -63,18 +63,27 @@ export default class Cl_mBanco {
         return this.transacciones;
     }
     //Metodos
-    //Resumen
     calcularTotales(saldoInicial = 5000.00) {
+        //Resumen
         let totalCargos = 0;
         let totalAbonos = 0;
+        // porcentajes
+        let conTransacciones = 0, contCargos = 0, contAbonos = 0;
         for (const t of this.transacciones) {
+            conTransacciones++;
             const monto = Number(t.monto) || 0;
-            if (Number(t.tipoTransaccion) === 1)
+            if (Number(t.tipoTransaccion) === 1) {
                 totalCargos -= monto;
-            else if (Number(t.tipoTransaccion) === 2)
+                contCargos++;
+            }
+            ;
+            if (Number(t.tipoTransaccion) === 2) {
                 totalAbonos += monto;
+                contAbonos++;
+            }
+            ;
         }
-        return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos + totalCargos };
+        return { totalCargos, totalAbonos, saldoFinal: saldoInicial + totalAbonos + totalCargos, porcentajeCargos: contCargos / conTransacciones * 100, porcentajeAbonos: contAbonos / conTransacciones * 100 };
     }
     formatearMonto(n) { return Number(n).toFixed(2); } //new
     eventTarget = new EventTarget(); //new
@@ -83,6 +92,6 @@ export default class Cl_mBanco {
     }
     emitirTotales() {
         const tot = this.calcularTotales();
-        this.eventTarget.dispatchEvent(new CustomEvent('totalesActualizados', { detail: tot }));
+        this.eventTarget.dispatchEvent(new CustomEvent('totalesActualizados', { detail: tot })); //IGNORAR
     }
 }
