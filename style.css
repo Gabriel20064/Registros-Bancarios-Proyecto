@@ -329,3 +329,71 @@ select:focus {
   font-weight: 600;
 }
 
+/* Estilos para vista de lista en móviles */
+.transaccion-item {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e9ecef;
+}
+
+.transaccion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.transaccion-header .fecha {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.transaccion-header .monto {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.descripcion {
+  font-size: 0.95em;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.referencia {
+  font-size: 0.85em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.acciones button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.acciones .btDetails {
+  background: #000;
+  color: white;
+}
+
+.acciones .btEdit {
+  background: #000;
+  color: white;
+}
+
+.acciones .btDelete {
+  background: #d32f2f;
+  color: white;
+}
+

@@ -9,28 +9,55 @@ export default class Cl_vBanco extends Cl_vGeneral {
         this.btAdd = this.crearHTMLButtonElement("btAdd", {
             onclick: () => this.controlador?.mostrarVista("registro")
         });
+        // Actualizar vista al cambiar tamaño de ventana
+        window.addEventListener('resize', () => this.refreshTable());
     }
     refreshTable() {
         if (!this.controlador)
             return;
-        let htmlTable = "";
+        let htmlContent = "";
         const transacciones = this.controlador.dtTransacciones;
         const banco = this.controlador.dtBanco;
-        transacciones.forEach((trans) => {
-            htmlTable += `
-            <tr>
-                <td>${trans.fecha}</td>
-                <td>${trans.descripcion}</td>
-                <td class= "${trans.tipoTransaccion === 1 ? "negative-amount" : "positive-amount"}">${trans.tipoTransaccion === 1 ? (trans.monto * -1).toFixed(2) + " Bs." : trans.monto.toFixed(2) + " Bs."}</td>
-                <td>${trans.referencia}</td>
-                <td>
-                    <button class="btDetails" data-ref="${trans.referencia}" title="Detalles de la Transaccion" style=" font-size: 1rem; color:black; background:black; border:2px solid black; padding:3px;">❔</button>
-                    <button class="btEdit" data-ref="${trans.referencia}" title="Editar Transaccion" style=" font-size: 1rem; color:black; background:black; border:2px solid black; padding:3px;">⚙️</button>
-                    <button class="btDelete" data-ref="${trans.referencia}" title="Eliminar Transaccion" style=" font-size: 1rem; color:red; background:red; border:2px solid black; padding:3px;">🗑️</button>
-                </td>
-            </tr>`;
-        });
-        this.divTransacciones.innerHTML = htmlTable;
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+            // Vista de tabla para móviles
+            transacciones.forEach((trans) => {
+                htmlContent += `
+                <div class="transaccion-item">
+                    <div class="transaccion-header">
+                        <span class="fecha">${trans.fecha}</span>
+                        <span class="monto ${trans.tipoTransaccion === 1 ? "negative-amount" : "positive-amount"}">${trans.tipoTransaccion === 1 ? (trans.monto * -1).toFixed(2) + " Bs." : trans.monto.toFixed(2) + " Bs."}</span>
+                    </div>
+                    <div class="descripcion">${trans.descripcion}</div>
+                    <div class="referencia">Ref: ${trans.referencia}</div>
+                    <div class="acciones">
+                        <button class="btDetails" data-ref="${trans.referencia}" title="Detalles de la Transaccion">❔</button>
+                        <button class="btEdit" data-ref="${trans.referencia}" title="Editar Transaccion">⚙️</button>
+                        <button class="btDelete" data-ref="${trans.referencia}" title="Eliminar Transaccion">🗑️</button>
+                    </div>
+                </div>`;
+            });
+        }
+        else {
+            // Vista de tabla para pc
+            htmlContent = "<table><thead><tr><th>Fecha</th><th>Descripción</th><th>Monto</th><th>Referencia</th><th>Acciones</th></tr></thead><tbody>";
+            transacciones.forEach((trans) => {
+                htmlContent += `
+                <tr>
+                    <td>${trans.fecha}</td>
+                    <td>${trans.descripcion}</td>
+                    <td class="${trans.tipoTransaccion === 1 ? "negative-amount" : "positive-amount"}">${trans.tipoTransaccion === 1 ? (trans.monto * -1).toFixed(2) + " Bs." : trans.monto.toFixed(2) + " Bs."}</td>
+                    <td>${trans.referencia}</td>
+                    <td>
+                        <button class="btDetails" data-ref="${trans.referencia}" title="Detalles de la Transaccion" style=" font-size: 1rem; color:black; background:black; border:2px solid black; padding:3px;">❔</button>
+                        <button class="btEdit" data-ref="${trans.referencia}" title="Editar Transaccion" style=" font-size: 1rem; color:black; background:black; border:2px solid black; padding:3px;">⚙️</button>
+                        <button class="btDelete" data-ref="${trans.referencia}" title="Eliminar Transaccion" style=" font-size: 1rem; color:red; background:red; border:2px solid black; padding:3px;">🗑️</button>
+                    </td>
+                </tr>`;
+            });
+            htmlContent += "</tbody></table>";
+        }
+        this.divTransacciones.innerHTML = htmlContent;
         this.asignarEventos();
         // Actualizacion totales//new
         if (this.controlador) {
