@@ -23,6 +23,8 @@ export default class Cl_vBanco extends Cl_vGeneral {
         const banco = this.controlador.dtBanco;
         const isMobile = window.innerWidth < 768;
 
+        this.divTransacciones.classList.toggle('mobile-list', isMobile);
+
         if (isMobile) {
             // Vista de tabla para móviles
             transacciones.forEach((trans: any) => {
