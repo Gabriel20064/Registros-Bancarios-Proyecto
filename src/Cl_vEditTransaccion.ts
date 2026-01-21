@@ -1,7 +1,5 @@
 import Cl_vGeneral from "./tools/Cl_vGeneral.js";
-import Cl_controlador from "./Cl_controlador.js";
 import Cl_mTransaccion , { iTransaccion } from "./Cl_mTransaccion.js";
-
 export default class Cl_vEditTransaccion extends Cl_vGeneral {
     private inFecha: HTMLInputElement;
     private inDescripcion: HTMLInputElement;
@@ -14,7 +12,6 @@ export default class Cl_vEditTransaccion extends Cl_vGeneral {
     private editingReferencia: string | null = null;
     constructor() {
         super({ formName: "editTransaccion" });
-        
         this.inFecha = this.crearHTMLInputElement("inFecha");
         this.inDescripcion = this.crearHTMLInputElement("inDescripcion");
         this.inMonto = this.crearHTMLInputElement("inMonto");
@@ -40,7 +37,6 @@ export default class Cl_vEditTransaccion extends Cl_vGeneral {
             console.error(e);
         }
     }
-
     public cargarDatos(trans: iTransaccion) {
         this.editingReferencia = trans.referencia;
         this.inFecha.value = trans.fecha;
@@ -97,7 +93,6 @@ export default class Cl_vEditTransaccion extends Cl_vGeneral {
     }
     public mostrar() { this.vista!.hidden = false; }
     public ocultar() { this.vista!.hidden = true; }
-
     private _aplicarFiltroCategorias(tipoEl: HTMLSelectElement, catEl: HTMLSelectElement) {
         const tipo = parseInt(tipoEl.value || "0", 10);
         let options = "";

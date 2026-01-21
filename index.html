@@ -69,13 +69,10 @@
 
             <label>Fecha: </label>
                 <input id= "registroTransaccion_inFecha" type="date" name=fecha required><br>
-
             <label>Descripcion:</label>
                 <input id= "registroTransaccion_inDescripcion" type="text" name="descripcion" minlength=1 maxlength="35" required placeholder="Ej. Pago de servicios"><br>
-
             <label>Referencia:</label>
                 <input id="registroTransaccion_inReferencia" type="text" name=referencia minlength=1 maxlength=7 required placeholder="Ej.TRX-001 (TRX para cargo, DEP para abono)"><br>
-
             <label>Categoria:</label>
                 <select id= "registroTransaccion_inCategoria" type="text" name="categoria" required>
                     <option value= 1 >Ingreso</option>
@@ -88,33 +85,26 @@
                     <option value= 8 >Gasto del Hogar</option>
                     <option value= 9 >Otros</option>
                 </select><br>
-
             <label>Monto:</label>
             <input id="registroTransaccion_inMonto" type="number" min= "0" maxlength="7" name="monto" step="0.01" required>
             <br><br>
         <button id="registroTransaccion_btGuardar">Guardar</button>
         <button id="registroTransaccion_btVolver">Volver</button>
     </section>
-
     <section id="editTransaccion" hidden>
         <h3>Editar Transaccion</h3>
             <input id="editTransaccion_inReferenciaHidden" type="hidden">
-
             <label>Tipo de Transaccion:</label>
                 <select id="editTransaccion_inTipoTransaccion">
                     <option value= 1 >Cargo</option>
                     <option value= 2 >Abono</option>
                 </select><br>
-
             <label>Fecha: </label>
                 <input id= "editTransaccion_inFecha" type="date" name=fecha required><br>
-
             <label>Descripcion:</label>
                 <input id= "editTransaccion_inDescripcion" type="text" name="descripcion" minlength=1 maxlength="35" required placeholder="Ej. Pago de servicios"><br>
-
             <label>Referencia:</label>
                 <input id="editTransaccion_inReferencia" type="text" name="referencia" minlength="1" maxlength="7" required placeholder="Ej.TRX-001 (TRX para cargo, DEP para abono)"><br>
-
             <label>Categoria:</label>
                 <select id= "editTransaccion_inCategoria" type="text" name="categoria" required>
                     <option value= 1 >Ingreso</option>
@@ -129,11 +119,9 @@
                 </select><br>
             <label>Monto:</label>
             <input id="editTransaccion_inMonto" type="number" min= "0" maxlength="7" name="monto" step="0.01" required><br><br>
-
         <button id="editTransaccion_btGuardar">Guardar</button>
         <button id="editTransaccion_btCancelar">Cancelar</button>
     </section>
-
     <section id="detailsTransaccion" hidden>
         <h3>Detalles de la Transaccion</h3>
 <div class="container">
@@ -141,37 +129,29 @@
     <h4 class="titulo">Fecha</h4>
     <p id="detailsTransaccion_lblFecha" class="dato"></p>
   </div>
-
   <div class="transaccion-item">
     <h4 class="titulo">Tipo</h4>
     <p id="detailsTransaccion_lblTipo" class="dato"></p>
   </div>
-
   <div class="transaccion-item">
     <h4 class="titulo">Monto</h4>
     <p id="detailsTransaccion_lblMonto" class="dato monto"></p>
   </div>
-
   <div class="transaccion-item">
     <h4 class="titulo">Descripción</h4>
     <p id="detailsTransaccion_lblDescripcion" class="dato"></p>
   </div>
-
   <div class="transaccion-item">
     <h4 class="titulo">Referencia</h4>
     <p id="detailsTransaccion_lblReferencia" class="dato"></p>
   </div>
-
   <div class="transaccion-item">
     <h4 class="titulo">Categoría</h4>
     <p id="detailsTransaccion_lblCategoria" class="dato"></p>
   </div>
-
   <button id="detailsTransaccion_btCerrar" class="btn-cerrar">Cerrar</button>
 </div>
-
     </section>
-
     <script type="module">
         import Cl_index from "./dist/Cl_index.js";
         new Cl_index();
