@@ -75,9 +75,11 @@ export default class Cl_vBanco extends Cl_vGeneral {
     //Para los Metodos
     // Actualizar los elementos del DOM que muestran los totales 
     actualizarDOMTotales(t) {
+        //Resumen
         const elCargos = document.getElementById("totalDeCargos");
         const elAbonos = document.getElementById("totalDeAbonos");
         const elSaldo = document.getElementById("saldoFinal");
+        // porcentajes
         const elporcentajeCargos = document.getElementById("porcentajeDeCargos");
         const elporcentajeAbonos = document.getElementById("porcentajeDeAbonos");
         const banco = this.controlador?.dtBanco;

@@ -30,5 +30,16 @@ export default class Cl_index {
         vTransaccion.controlador = controlador;
         vEditTransaccion.controlador = controlador;
         controlador.mostrarVista("transacciones");
+        // alert
+        const btnDatosArray = document.getElementById('registroTransaccion_btDatosArray'); //new
+        if (btnDatosArray) { //new
+            btnDatosArray.addEventListener('click', () => {
+                const alerta = modelo.dtTransacciones.map((t, i) => {
+                    const tipo = t.tipoTransaccion === 1 ? 'Cargo' : 'Abono'; //new
+                    return `Transacción ${i + 1}:\nFecha: ${t.fecha}\nTipo: ${tipo}\nMonto: ${t.monto} Bs.\nReferencia: ${t.referencia}\nCategoría: ${t.categoria}\nDescripción: ${t.descripcion}`; //new
+                });
+                console.log(alerta.join('\n\n')); //new
+            });
+        }
     }
 }
