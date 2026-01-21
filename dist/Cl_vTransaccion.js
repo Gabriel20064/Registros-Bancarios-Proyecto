@@ -22,7 +22,7 @@ export default class vTransaccion extends Cl_vGeneral {
         this.btVolver = this.crearHTMLButtonElement("btVolver", {
             onclick: () => this.volver()
         });
-        // (Nuevo) Añadir listener para filtrar categorías según el tipo de transacción
+        //Añadir listener para filtrar categorías según el tipo de transacción
         try {
             const tipoEl = document.getElementById(`${this.formName}_inTipoTransaccion`);
             const catEl = document.getElementById(`${this.formName}_inCategoria`);

@@ -6,7 +6,6 @@ export interface iTransaccion{
     tipoTransaccion: number;
     categoria: number; //1 para Ingreso
 }
-
 export default class Cl_mTransaccion{
     protected _fecha: string = "";
     protected _descripcion: string ="";

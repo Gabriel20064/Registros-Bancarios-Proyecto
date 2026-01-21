@@ -2,33 +2,6 @@ import Cl_mTransaccion from "./Cl_mTransaccion.js";
 export default class Cl_mBanco {
     transacciones = [];
     STORAGE_KEY = "Movimientos_Bancarios_data";
-    //Atributos derivados para los metodos de conciliacion (en revision)
-    //Resumen
-    acmMontoCargos = 0;
-    acmMontoAbonos = 0;
-    //Desglose por categoria
-    cntTransacciones = 0;
-    categoria1 = 0; // Ingresos
-    categoria2 = 0; // Alimentacion
-    categoria3 = 0; // Servicios Basicos
-    categoria4 = 0; // Articulos de Vestimenta
-    categoria5 = 0; // Servicios Publicos
-    categoria6 = 0; // Entretenimiento
-    categoria7 = 0; // Educacion
-    categoria8 = 0; // Gasto del Hogar
-    categoria9 = 0; // Otros
-    cntCategoria1 = 0;
-    cntCategoria2 = 0;
-    cntCategoria3 = 0;
-    cntCategoria4 = 0;
-    cntCategoria5 = 0;
-    cntCategoria6 = 0;
-    cntCategoria7 = 0;
-    cntCategoria8 = 0;
-    cntCategoria9 = 0;
-    //Analisis
-    categoriaMayorGasto = 0; // Categoria con mayor gasto
-    montoMayorGasto = 0; // Monto de la categoria con mayor gasto
     constructor() {
         this.cargar();
         this.emitirTotales(); //new

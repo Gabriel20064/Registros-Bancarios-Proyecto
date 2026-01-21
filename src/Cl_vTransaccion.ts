@@ -10,7 +10,6 @@ export default class vTransaccion extends Cl_vGeneral {
     private inCategoria: HTMLInputElement;
     private btVolver: HTMLButtonElement;
     private btGuardar: HTMLButtonElement;
-    
     constructor(){
         super({formName: "registroTransaccion"})
         this.inFecha = this.crearHTMLInputElement("inFecha");
@@ -26,7 +25,7 @@ export default class vTransaccion extends Cl_vGeneral {
             onclick: () => this.volver()
         });
 
-        // (Nuevo) Añadir listener para filtrar categorías según el tipo de transacción
+        //Añadir listener para filtrar categorías según el tipo de transacción
         try {
             const tipoEl = document.getElementById(`${this.formName}_inTipoTransaccion`) as HTMLSelectElement | null;
             const catEl = document.getElementById(`${this.formName}_inCategoria`) as HTMLSelectElement | null;
@@ -40,7 +39,6 @@ export default class vTransaccion extends Cl_vGeneral {
             console.error(e);
         }
     }
-
     private _aplicarFiltroCategorias(tipoEl: HTMLSelectElement, catEl: HTMLSelectElement) {
         const tipo = parseInt(tipoEl.value || "0", 10);
         let options = "";
@@ -77,8 +75,7 @@ export default class vTransaccion extends Cl_vGeneral {
         catEl.innerHTML = options;
         if (catEl.querySelector(`option[value="${prev}"]`)) catEl.value = prev;
     }
-
-    private guardar(){ //ARREGLADO
+    private guardar(){
         if (!this.inFecha.value || !this.inDescripcion.value || !this.inMonto.value || !this.inReferencia.value || !this.inTipoTransaccion.value || !this.inCategoria.value){ 
             alert("Debes llenar todos los campos.");
             return;}
@@ -113,7 +110,6 @@ export default class vTransaccion extends Cl_vGeneral {
         this.limpiar();
         this.controlador?.mostrarVista("transacciones");
     }
-
     private limpiar() {
         this.inFecha.value = "";
         this.inDescripcion.value = "";
@@ -123,7 +119,6 @@ export default class vTransaccion extends Cl_vGeneral {
         this.inTipoTransaccion.value = "";
         this.inCategoria.value = "";
     }
-
     public mostrar() { this.vista!.hidden = false; }
     public ocultar() { this.vista!.hidden = true; }
         

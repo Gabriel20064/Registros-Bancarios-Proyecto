@@ -1,6 +1,5 @@
 import Cl_vGeneral from "./tools/Cl_vGeneral.js";
 import Cl_mTransaccion from "./Cl_mTransaccion.js"; 
-
 export default class Cl_vDetailsTransaccion extends Cl_vGeneral { 
     private lblFecha: HTMLElement; 
     private lblTipo: HTMLElement; 
@@ -22,7 +21,6 @@ export default class Cl_vDetailsTransaccion extends Cl_vGeneral {
             onclick: () => this.cerrar() 
         }); 
     } 
-
     public cargarDatos(trans: Cl_mTransaccion) { 
         if (!trans) return; 
         this.lblFecha.textContent = trans.fecha; 
@@ -36,7 +34,6 @@ export default class Cl_vDetailsTransaccion extends Cl_vGeneral {
     private cerrar() {
         this.controlador?.mostrarVista("transacciones");
         }
-    
     public mostrar() { this.vista!.hidden = false; }
     public ocultar() { this.vista!.hidden = true; }
 }

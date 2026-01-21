@@ -13,9 +13,7 @@ export default class Cl_index {
     let vista = new Cl_vBanco();
     let vTransaccion = new Cl_vTransaccion();
     let vEditTransaccion = new Cl_vEditTransaccion();
-    let vDetailsTransaccion = new Cl_vDetailsTransaccion();
-    
-    
+    let vDetailsTransaccion = new Cl_vDetailsTransaccion();    
     // Inyectamos todas las vistas
     let controlador = new Cl_controlador(
         modelo, vista, vTransaccion, vEditTransaccion, vDetailsTransaccion
