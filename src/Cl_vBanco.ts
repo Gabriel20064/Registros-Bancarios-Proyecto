@@ -24,10 +24,8 @@ export default class Cl_vBanco extends Cl_vGeneral {
             <tr>
                 <td>${trans.fecha}</td>
                 <td>${trans.descripcion}</td>
-                <td class= "${trans.tipoTransaccion === 1 ? "negative-amount" : "positive-amount"}">${trans.tipoTransaccion === 1 ? "Cargo" : "Abono"}</td>
                 <td class= "${trans.tipoTransaccion === 1 ? "negative-amount" : "positive-amount"}">${trans.tipoTransaccion === 1 ? (trans.monto * -1).toFixed(2) + " Bs." : trans.monto.toFixed(2) + " Bs."}</td>
                 <td>${trans.referencia}</td>
-                <td>${trans.categoriaTexto()}</td>
                 <td>
                     <button class="btDetails" data-ref="${trans.referencia}" title="Detalles de la Transaccion" style=" font-size: 1rem; color:black; background:black; border:2px solid black; padding:3px;">❔</button>
                     <button class="btEdit" data-ref="${trans.referencia}" title="Editar Transaccion" style=" font-size: 1rem; color:black; background:black; border:2px solid black; padding:3px;">⚙️</button>
